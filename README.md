@@ -1,4 +1,6 @@
-HarmonyOS NEXT 项目开发模板
+<h2 align="center">
+  HarmonyOS NEXT 项目开发模板
+</h2>
 
 ## 目录说明
 ```
@@ -54,3 +56,4 @@ HarmonyOS NEXT 项目开发模板
 ├─ oh-package.json5 ----------------------- 配置第三方包声明文件的入口及包名
 └─ oh-package-lock.json5
 ```
+`模板还在继续完善中。。。`
