@@ -6,11 +6,11 @@ const PASS_LIST = ['pages/LoginPage']
 
 export class Auth {
   static initLocalUser() {
-    PersistentStorage.PersistProp(USER_KEY, '{}')
+    PersistentStorage.persistProp(USER_KEY, '{}')
   }
 
   static setUser(user: User) {
-    AppStorage.Set(USER_KEY, JSON.stringify(user))
+    AppStorage.setOrCreate(USER_KEY, JSON.stringify(user))
   }
 
   static getUser() {
@@ -19,7 +19,7 @@ export class Auth {
   }
 
   static delUser() {
-    AppStorage.Set(USER_KEY, '{}')
+    AppStorage.setOrCreate(USER_KEY, '{}')
   }
 
   // 需要登录页面使用

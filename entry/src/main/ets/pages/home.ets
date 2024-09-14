@@ -1,13 +1,13 @@
 import SwiperLayout from '../components/SwiperLayout'
 import NavList from '../components/NavList'
+import { Obj } from '../models'
 import SearchBar from '../components/SearchBar'
-import { getHomeData } from '../api'
 
 @Entry
 @Component
 struct Home {
   @State message: string = '首页'
-  @State bannerList: any[] = [
+  @State bannerList: Obj [] = [
     {
       "id": 1,
       "name": "banner1",
@@ -29,7 +29,7 @@ struct Home {
       "imageURL": "https://i0.hdslb.com/bfs/mall/mall/93/da/93da12e8407ac295dc526ebf385905dd.png@.jpg"
     }
   ]
-  @State navList: any[] = [
+  @State navList: Obj[] = [
     {
       "name": "手办",
       "jumpUrl": "https://www.biligo.com/list.html?noTitleBar=1&from=category_sb&category=1_107&scene=figure",
@@ -102,7 +102,7 @@ struct Home {
   }
 
   async getHomeData() {
-    const homeData = await getHomeData({})
+    // const homeData = await getHomeData({})
     // this.bannerList = homeData.bannerList;
     // this.navList = homeData.navList;
     // this.tileList = homeData.tileList;

@@ -6,7 +6,7 @@ import See from './see'
 import Discover from './discover'
 import My from './my'
 
-class ToolBarItem {
+interface ToolBarItem {
   defaultIcon: string | Resource
   activeIcon: string | Resource
   label: string
@@ -48,8 +48,8 @@ struct Index {
       }
       .tabBar(this.TabBuilder({
         label: '首页',
-        defaultIcon: $r('app.media.icon'),
-        activeIcon: $r('app.media.icon')
+        defaultIcon: $r('app.media.app_icon'),
+        activeIcon: $r('app.media.app_icon')
       }, 0))
 
       TabContent() {
@@ -57,8 +57,8 @@ struct Index {
       }
       .tabBar(this.TabBuilder({
         label: '看看',
-        defaultIcon: $r('app.media.icon'),
-        activeIcon: $r('app.media.icon')
+        defaultIcon: $r('app.media.app_icon'),
+        activeIcon: $r('app.media.app_icon')
       }, 1))
 
       TabContent() {
@@ -66,8 +66,8 @@ struct Index {
       }
       .tabBar(this.TabBuilder({
         label: '发现',
-        defaultIcon: $r('app.media.icon'),
-        activeIcon: $r('app.media.icon')
+        defaultIcon: $r('app.media.app_icon'),
+        activeIcon: $r('app.media.app_icon')
       }, 2))
 
       TabContent() {
@@ -75,8 +75,8 @@ struct Index {
       }
       .tabBar(this.TabBuilder({
         label: '我的',
-        defaultIcon: $r('app.media.icon'),
-        activeIcon: $r('app.media.icon')
+        defaultIcon: $r('app.media.app_icon'),
+        activeIcon: $r('app.media.app_icon')
       }, 3))
     }
     .barMode(BarMode.Fixed)

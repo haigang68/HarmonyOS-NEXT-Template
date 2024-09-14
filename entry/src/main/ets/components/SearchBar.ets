@@ -12,7 +12,7 @@ struct SearchBar {
           .width('70%')
       }
 
-      Image($r('app.media.icon'))
+      Image($r('app.media.startIcon'))
         .width(20)
         .height(20)
     }

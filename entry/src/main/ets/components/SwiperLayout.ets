@@ -1,15 +1,17 @@
+import { Obj } from '../models'
+
 // @Preview
 @Component
 struct SwiperLayout {
-  @Prop bannerList: any[]
+  @Prop bannerList: Obj[]
 
   build() {
     Swiper() {
-      ForEach(this.bannerList, (item) => {
-        Image(item.imageURL)
+      ForEach(this.bannerList, (item: Obj) => {
+        Image(item.imageURL as string)
           .width('100%')
           .height(175)
-      }, (item) => item.id + '')
+      }, (item: Record<string, string>) => item.id + '')
     }
     .loop(true)
     .autoPlay(true)
