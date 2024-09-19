@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct See {
+export default struct See {
   @State message: string = '看看'
 
   aboutToAppear(): void {
@@ -16,8 +16,7 @@ struct See {
     .height('100%')
     .scrollBar(BarState.Off)
     .align(Alignment.TopStart)
+
     // .backgroundImageSize(ImageSize.Auto)
   }
 }
-
-export default See

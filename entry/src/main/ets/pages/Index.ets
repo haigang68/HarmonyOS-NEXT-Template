@@ -12,9 +12,14 @@ interface ToolBarItem {
   label: string
 }
 
+@Builder
+export function IndexBuilder() {
+  Index()
+}
+
 @Entry
 @Component
-struct Index {
+export default struct Index {
   @State activeIndex: number = 0
   @State isLandscape: boolean = false
   listener = mediaquery.matchMediaSync('(orientation: landscape)')

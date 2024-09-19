@@ -1,16 +1,13 @@
-import hilog from '@ohos.hilog';
-
-const LOGGER_PREFIX: string = 'IH_LOGGER';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Logger {
   private domain: number;
   private prefix: string;
-
   private format: string = '%{public}s, %{public}s';
 
-  constructor(prefix: string = '', domain: number = 0x0000) {
+  constructor(prefix: string) {
     this.prefix = prefix;
-    this.domain = domain;
+    this.domain = 0xFF00;
   }
 
   debug(...args: string[]): void {
@@ -30,4 +27,4 @@ class Logger {
   }
 }
 
-export default new Logger(LOGGER_PREFIX);
+export default new Logger('IH_LOGGER');

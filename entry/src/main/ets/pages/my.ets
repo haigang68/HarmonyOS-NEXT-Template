@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct My {
+export default struct My {
   @State message: string = '我的'
 
   aboutToAppear(): void {
@@ -16,8 +16,7 @@ struct My {
     .height('100%')
     .scrollBar(BarState.Off)
     .align(Alignment.TopStart)
+
     // .backgroundImageSize(ImageSize.Auto)
   }
 }
-
-export default My

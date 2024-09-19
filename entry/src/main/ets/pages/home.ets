@@ -1,11 +1,18 @@
 import SwiperLayout from '../components/SwiperLayout'
 import NavList from '../components/NavList'
 import { Obj } from '../models'
+import logger from '../utils/logger'
 import SearchBar from '../components/SearchBar'
+
+@Builder
+export function HomeBuilder() {
+  Home()
+}
 
 @Entry
 @Component
-struct Home {
+export default struct Home {
+  pageInfos: NavPathStack = new NavPathStack();
   @State message: string = '首页'
   @State bannerList: Obj [] = [
     {
@@ -111,25 +118,29 @@ struct Home {
   }
 
   build() {
-    Stack() {
-      Scroll() {
-        Column() {
-          SwiperLayout({ bannerList: this.bannerList })
+    NavDestination() {
+      Stack() {
+        Scroll() {
           Column() {
-            NavList({ navList: this.navList })
+            SwiperLayout({ bannerList: this.bannerList })
+            Column() {
+              NavList({ navList: this.navList })
+            }
+            .padding({ left: 20, right: 20 })
           }
-          .padding({ left: 20, right: 20 })
+          .justifyContent(FlexAlign.Start)
         }
-        .justifyContent(FlexAlign.Start)
+        .height('100%')
+        .align(Alignment.TopStart)
+
+        SearchBar()
       }
       .height('100%')
-      .align(Alignment.TopStart)
-
-      SearchBar()
+      .alignContent(Alignment.TopStart)
     }
-    .height('100%')
-    .alignContent(Alignment.TopStart)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      logger.info("当前页面的配置信息 ——>" + JSON.stringify(context.getConfigInRouteMap()));
+    })
   }
 }
-
-export default Home

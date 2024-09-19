@@ -1,5 +1,7 @@
 {
   "src": [
-    "pages/Index"
+    "pages/ads",
+    "pages/Index",
+    "pages/home"
   ]
 }

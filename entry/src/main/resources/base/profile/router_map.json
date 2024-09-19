@@ -1,0 +1,28 @@
+{
+  "routerMap": [
+    {
+      "name": "ads",
+      "pageSourceFile": "src/main/ets/pages/ads.ets",
+      "buildFunction": "AdsBuilder",
+      "data": {
+        "description": "广告"
+      }
+    },
+    {
+      "name": "home",
+      "pageSourceFile": "src/main/ets/pages/home.ets",
+      "buildFunction": "HomeBuilder",
+      "data": {
+        "description": "首页"
+      }
+    },
+    {
+      "name": "discover",
+      "pageSourceFile": "src/main/ets/pages/discover.ets",
+      "buildFunction": "DiscoverBuilder",
+      "data": {
+        "description": "发现"
+      }
+    }
+  ]
+}

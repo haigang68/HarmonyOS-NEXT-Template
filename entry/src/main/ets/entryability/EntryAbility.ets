@@ -5,23 +5,23 @@ import logger from '../utils/logger';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    logger.info('Ability onCreate');
+    logger.info('Ability onCreate...');
   }
 
   onDestroy(): void {
-    logger.info('Ability onDestroy');
+    logger.info('Ability onDestroy...');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     logger.info('Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', (err) => {
+    windowStage.loadContent('pages/ads', (err) => {
       if (err.code) {
-        logger.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        logger.error('加载失败...', JSON.stringify(err) ?? '');
         return;
       }
-      logger.info('Succeeded in loading the content.');
+      logger.info('加载成功...');
 
       // 获取应用主窗口
       const windowClass: window.Window = windowStage.getMainWindowSync();
@@ -34,16 +34,16 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
-    logger.info('Ability onWindowStageDestroy');
+    logger.info('Ability onWindowStageDestroy...');
   }
 
   onForeground(): void {
     // Ability has brought to foreground
-    logger.info('Ability onForeground');
+    logger.info('Ability onForeground...');
   }
 
   onBackground(): void {
     // Ability has back to background
-    logger.info('Ability onBackground');
+    logger.info('Ability onBackground...');
   }
 }
