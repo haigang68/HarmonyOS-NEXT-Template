@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from '@ohos/axios';
-// import { promptAction } from '@kit.ArkUI';
 import router from '@ohos.router'
 import { Auth } from '../models/Auth'
 import logger from './logger'
@@ -11,10 +10,6 @@ import logger from './logger'
 //   504: '网关超时。',
 // }
 
-// const errorToast = (message: string) => {
-//   promptAction.showToast({ message })
-// }
-
 const user = Auth.getUser()
 
 /**
@@ -23,7 +18,6 @@ const user = Auth.getUser()
  * request.get(url, { params: {} })
  */
 const request = axios.create({
-  baseURL: 'http://172.17.0.195:6060',
   timeout: 20000,
 });
 
