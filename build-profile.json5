@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/haigang/.ohos/config/default_HarmonyOS-NEXT-Template_d7OZMrgfMliWf1M3wYxihxownV25h5bl0P1FoKOlNgs=.cer",
+          "storePassword": "0000001BF43C2EF9F1CE88A7A1175569D0DEF05B08B51B93A2969412EF71E6108565357752B972C5515F53",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BBDB04DC6815DFEFE474DFBDCE93D1BCFAEB774E951E7E333041CB89EFEDE9D5D8F1643E60A03B6",
+          "profile": "/Users/haigang/.ohos/config/default_HarmonyOS-NEXT-Template_d7OZMrgfMliWf1M3wYxihxownV25h5bl0P1FoKOlNgs=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/haigang/.ohos/config/default_HarmonyOS-NEXT-Template_d7OZMrgfMliWf1M3wYxihxownV25h5bl0P1FoKOlNgs=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",

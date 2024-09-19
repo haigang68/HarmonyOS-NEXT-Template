@@ -1,20 +1,28 @@
 import { webview } from '@kit.ArkWeb';
 
+@Builder
+export function webBuilder() {
+  web()
+}
+
 @Entry
 @Component
-struct WebView {
+struct web {
+  pageInfos: NavPathStack = new NavPathStack()
   controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
-    Row() {
+    NavDestination() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .domStorageAccess(true)
       }
       .width('100%')
     }
-    .height('100%')
+    .title('web')
+    .hideTitleBar(true)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack
+    })
   }
 }
-
-export default WebView

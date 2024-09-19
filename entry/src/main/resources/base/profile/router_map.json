@@ -9,19 +9,35 @@
       }
     },
     {
+      "name": "login",
+      "pageSourceFile": "src/main/ets/pages/login.ets",
+      "buildFunction": "loginBuilder",
+      "data": {
+        "description": "登陆"
+      }
+    },
+    {
+      "name": "index",
+      "pageSourceFile": "src/main/ets/pages/index.ets",
+      "buildFunction": "indexBuilder",
+      "data": {
+        "description": "index"
+      }
+    },
+    {
       "name": "home",
       "pageSourceFile": "src/main/ets/pages/home.ets",
-      "buildFunction": "HomeBuilder",
+      "buildFunction": "homeBuilder",
       "data": {
         "description": "首页"
       }
     },
     {
-      "name": "discover",
-      "pageSourceFile": "src/main/ets/pages/discover.ets",
-      "buildFunction": "DiscoverBuilder",
+      "name": "web",
+      "pageSourceFile": "src/main/ets/pages/web.ets",
+      "buildFunction": "webBuilder",
       "data": {
-        "description": "发现"
+        "description": "Web"
       }
     }
   ]

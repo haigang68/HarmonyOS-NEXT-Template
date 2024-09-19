@@ -6,9 +6,10 @@ export function loginBuilder() {
 @Entry
 @Component
 struct login {
-  pathStack: NavPathStack = new NavPathStack()
+  pageInfos: NavPathStack = new NavPathStack()
   @State @Watch('isLogin') account: string = '' // 账户
-  @State @Watch('isLogin') password: string = '' // 密码
+  @State @Watch('isLogin') passWord: string = '' // 密码
+  @State @Watch('isLogin') smsCode: string = '' // 验证码
   @State @Watch('isLogin') confirmPassword: string = '' // 确认密码
   // @State isLogin: boolean = false //是否登陆
   @State isCodeLogin: boolean = false // 是否短信登陆
@@ -16,15 +17,18 @@ struct login {
   @State isFingerprint: boolean = true // 指纹登陆
   @State isCountDown: boolean = false // 倒计时开始
   @State isRegister: boolean = false // 注册账号
+  @State isChecked: boolean = false // 协议
   @State time: number = 60; // 倒计时时间
   private timerId: number | null = null;
 
   isLogin(): boolean {
-    console.log('-----isLogin')
-    if (this.isRegister) {
-      return this.account.length > 0 && this.password.length > 0 && this.confirmPassword.length > 0
+    if (this.isCodeLogin) {
+      return this.account.length > 0 && this.smsCode.length > 0
     }
-    return this.account.length > 0 && this.password.length > 0
+    if (this.isRegister) {
+      return this.account.length > 0 && this.passWord.length > 0 && this.confirmPassword.length > 0
+    }
+    return this.account.length > 0 && this.passWord.length > 0
   }
 
   // 启动倒计时
@@ -75,6 +79,10 @@ struct login {
               TextInput({ placeholder: '短信验证码' })
                 .width('55%')
                 .type(InputType.Number)
+                .onChange((value: string) => {
+                  this.passWord = value;
+                  // this.isLoginAvailable();
+                })
               Blank()
               Button(this.isCountDown ? `${this.time}s后重新获取` : `获取验证码`)
                 .buttonStyle(ButtonStyleMode.NORMAL)
@@ -95,7 +103,7 @@ struct login {
               .type(InputType.Password)
               .backgroundColor(Color.White)
               .onChange((value: string) => {
-                this.password = value;
+                this.passWord = value;
                 // this.isLoginAvailable();
               })
           }
@@ -144,7 +152,7 @@ struct login {
           .fontSize(16)
           .enabled(this.isLogin())
           .fontWeight(FontWeight.Medium)
-          .margin({ top: 87, bottom: 12 })
+          .margin({ top: 60, bottom: 12 })
           .backgroundColor(this.isLogin() ? '#0A59F7' : '#66007DFF')
           .onClick(() => {
             // this.login();
@@ -158,10 +166,8 @@ struct login {
             // this.pageInfos.pushPathByName('register', null);
           })
 
-        Blank()
-
         if (this.isFace || this.isFingerprint) {
-          Text('其他登陆方式')
+          Text('—— 其他登陆方式 ——')
             .fontSize(12)
             .fontColor('#838D97')
             .fontWeight(FontWeight.Medium)
@@ -193,6 +199,34 @@ struct login {
               })
             }
           }
+
+          Blank()
+
+          Row() {
+            Radio({ value: '', group: '' })
+              .width(12)
+              .height(12)
+              .checked(this.isChecked)
+
+            Text() {
+              Span('我已阅读并同意')
+              Span('《使用条款》')
+                .fontColor('#0A59F7')
+                .onClick(() => {
+                  console.log('协议1')
+                })
+              Span('和')
+              Span('《隐私条款》')
+                .fontColor('#0A59F7')
+                .onClick(() => {
+                  console.log('协议2')
+                })
+            }
+            .fontSize(11)
+          }
+          .onClick(() => {
+            this.isChecked = !this.isChecked
+          })
         }
       }
       .width('100%')
@@ -202,9 +236,8 @@ struct login {
     }
     .title('login')
     .hideTitleBar(true)
-    .backgroundColor('#F1F3F5')
     .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack
+      this.pageInfos = context.pathStack
     })
   }
 }

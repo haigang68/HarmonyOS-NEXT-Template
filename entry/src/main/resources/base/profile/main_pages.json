@@ -1,7 +1,10 @@
 {
   "src": [
+    "pages/entry",
     "pages/ads",
-    "pages/Index",
-    "pages/home"
+    "pages/login",
+    "pages/index",
+    "pages/home",
+    "pages/web"
   ]
 }
