@@ -2,6 +2,13 @@
   "module": {
     "name": "entry",
     "type": "entry",
+    "metadata": [
+      {
+        // 在hmos平台开通推送服务
+        "name": "client_id",
+        "value": "1517476200342133952"
+      }
+    ],
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
@@ -47,6 +54,53 @@
             "resource": "$profile:backup_config"
           }
         ],
+      }
+    ],
+    "requestPermissions": [
+      {
+        // 网络权限（必选）
+        "name": "ohos.permission.INTERNET"
+      },
+      {
+        // 获取WIFI连接状态权限（必选）
+        "name": "ohos.permission.GET_WIFI_INFO"
+      },
+      {
+        // 获取网络状态权限（必选）
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        // 获取终端用户设备唯一性标识，以确保能准确进行消息推送。（必选）
+        "name": "ohos.permission.APP_TRACKING_CONSENT",
+        "reason": "$string:reason", // 申请权限的原因
+        "usedScene": { // 权限使用的场景
+          "abilities": [ // 使用权限的UIAbility或者ExtensionAbility组件的名称
+            "EntryAbility" //一般要用首页
+          ],
+          "when": "always" // inuse（使用时）、always（始终），不能为空
+        }
+      },
+      {
+        // 获取粗略位置。用于实现分群推送。（可选）
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        // 获取精确位置。用于实现分群推送。（可选）
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ]
   }

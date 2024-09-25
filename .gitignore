@@ -1,7 +1,9 @@
 /node_modules
 /oh_modules
 /local.properties
+/signature/material
 /.idea
+/.DS_Store
 **/build
 /.hvigor
 .cxx

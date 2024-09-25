@@ -2,4 +2,4 @@
 export const ENV = 'test'
 
 // 极光推送
-export const JPUSH_APPKEY = "17b82a62cb79b2755d6b9ac7"
+export const AppKey = "7c9235350a4b91e7c2c505b1"

@@ -1,10 +1,23 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
+import notificationManager from '@ohos.notificationManager';
 import logger from '../utils/logger';
+import { window } from '@kit.ArkUI';
+import Base from '@ohos.base';
+import { JPush } from '../utils/jpush'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     logger.info('Ability onCreate...');
+
+    // 极光推送
+    new JPush(want, this.context);
+
+    // 申请打开通知开关 (如果没有打开通知开关，将收不到通知)
+    notificationManager.requestEnableNotification().then(() => {
+      logger.info('申请打开通知开关-success')
+    }).catch((err: Base.BusinessError) => {
+      logger.info('申请打开通知开关-err', `code:${err.code}, message:${err.message}`)
+    });
   }
 
   onDestroy(): void {
