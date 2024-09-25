@@ -3,7 +3,7 @@
     {
       "name": "ads",
       "pageSourceFile": "src/main/ets/pages/ads.ets",
-      "buildFunction": "AdsBuilder",
+      "buildFunction": "adsBuilder",
       "data": {
         "description": "广告"
       }
