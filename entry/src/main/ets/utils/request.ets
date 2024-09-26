@@ -41,8 +41,11 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (response: AxiosResponse) => {
     // 对响应数据做点什么
-    const { url, method } = response.config;
-    logger.info(`响应→${url}→${method}`, JSON.stringify(response.data));
+    logger.info(`响应
+      →${response.config.url}
+      →${response.config.method}`, 
+      JSON.stringify(response.data)
+    );
 
     if (response.data.code === 200) {
       return response.data.data;
