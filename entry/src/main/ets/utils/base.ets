@@ -1,4 +1,5 @@
 import display from '@ohos.display';
+import { Want } from '@kit.AbilityKit';
 import deviceInfo from '@ohos.deviceInfo';
 
 // 手机端缩放vp
