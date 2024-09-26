@@ -23,7 +23,7 @@ struct web {
   build() {
     NavDestination() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
+        Web({ src: $rawfile("index.html"), controller: this.controller })
           .domStorageAccess(true)
           .onControllerAttached(() => {
             // 注册 jsbridge，类，h5中的名字，注册的方法

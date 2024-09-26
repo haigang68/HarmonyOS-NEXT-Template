@@ -4,7 +4,7 @@ import { Auth } from '../models/Auth'
 const BASE_URL = 'https://api-harmony-teach.itheima.net/hm/'
 const req = http.createHttp()
 
-const code = {
+const code: Record<number, string> = {
   200: '服务器成功返回请求的数据。',
   // 201: '新建或修改数据成功。',
   // 202: '一个请求已经进入后台排队（异步任务）。',
@@ -22,14 +22,11 @@ const code = {
   // 503: '服务不可用，服务器暂时过载或维护。',
   // 504: '网关超时。',
 }
-const error = (error: object = {}) => {
-  // 提示
-}
 
-const request = <T = unknown>(
+const request = (
   url: string,
   method: http.RequestMethod = http.RequestMethod.GET,
-  params: object = {}
+  params: Record<string, string | number> = {}
 ) => {
   let fullUrl = BASE_URL + url
   const options: http.HttpRequestOptions = {
@@ -50,28 +47,27 @@ const request = <T = unknown>(
 
   // 携带 token
   const user = Auth.getUser()
-  if (user.token) {
+  if (user.token && options.header) {
     options.header['Authorization'] = `Bearer ${user.token}`
   }
 
   return req.request(fullUrl, options)
-
 }
 
 export class Request {
-  static get<T>(url: string, params?: object) {
-    return request<T>(url, http.RequestMethod.GET, params)
+  static get(url: string, params?: Record<string, string>): Promise<http.HttpResponse> {
+    return request(url, http.RequestMethod.GET, params)
   }
 
-  static post<T>(url: string, params?: object) {
-    return request<T>(url, http.RequestMethod.POST, params)
+  static post(url: string, params?: Record<string, string>): Promise<http.HttpResponse> {
+    return request(url, http.RequestMethod.POST, params)
   }
 
-  static put<T>(url: string, params?: object) {
-    return request<T>(url, http.RequestMethod.PUT, params)
+  static put(url: string, params?: Record<string, string>): Promise<http.HttpResponse> {
+    return request(url, http.RequestMethod.PUT, params)
   }
 
-  static delete<T>(url: string, params?: object) {
-    return request<T>(url, http.RequestMethod.DELETE, params)
+  static delete(url: string, params?: Record<string, string>): Promise<http.HttpResponse> {
+    return request(url, http.RequestMethod.DELETE, params)
   }
 }

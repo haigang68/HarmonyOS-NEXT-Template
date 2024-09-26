@@ -1,3 +1,6 @@
+import { ENV } from './index'
+
+// 暂时无法解决 arkts 不能索引取值问题 (arkts-no-props-by-index) <ArkTSCheck>
 export default {
   test: {
     BASE_URL: 'https://ama.internal.manulife-sinochem.com/adpms',
@@ -12,4 +15,4 @@ export default {
   prd: {
     BASE_URL: ''
   }
-};
+}[ENV];

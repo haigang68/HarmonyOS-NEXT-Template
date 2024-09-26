@@ -1,5 +1,5 @@
 import { common, Want } from '@kit.AbilityKit';
-import { AppKey } from '../config/env';
+import { AppKey } from '../config/index';
 import logger from '../utils/logger';
 import {
   CallBackMsg,

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>文件上传页面</title>
+</head>
+<body>
+
+<h2>上传文件</h2>
+
+<!-- 上传文件表单 -->
+<form action="/upload" enctype="multipart/form-data" id="uploadForm" method="post">
+    <input accept=".jpg,.jpeg.png,.mp3,.ape,.aac,.flac,.wav,.wma,.ogg,.m4a,.x-m4a,.mp4,.mov,.mkv,.mpg.rmvb"
+           id="fileInput" name="file"
+           onchange="handleFileChange(event)" style="display: none;" type="file">
+    <button onclick="document.getElementById('fileInput').click()" type="button">选择文件</button>
+    <p id="fileName"></p>
+    <br>
+    <button type="submit">上传文件</button>
+</form>
+
+<script>
+    function handleFileChange(event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('fileName').textContent = '已选择文件: ' + file.name;
+        } else {
+            document.getElementById('fileName').textContent = '';
+        }
+    }
+</script>
+
+</body>
+</html>
